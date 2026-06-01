@@ -1,0 +1,41 @@
+.select {
+  &PrimaryBg {
+    background-color: var(--bg-select-primary);
+  }
+
+  &SecondaryBg {
+    background-color: var(--bg-select-secondary);
+  }
+
+  &Wrapper {
+    border-radius: 12px;
+    position: relative;
+  }
+
+  &Button {
+    border-radius: 12px;
+    padding: 0.5rem 0.8rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.3rem;
+
+    &:hover {
+      background-color: var(--bg-select-active);
+    }
+  }
+
+  &Title {
+    color: var(--text-primary);
+  }
+}
+
+@media (max-width: 480px) {
+  .select {
+    &Button {
+      padding: 0.5rem 0.2rem;
+      gap: 0.2rem;
+    }
+  }
+}

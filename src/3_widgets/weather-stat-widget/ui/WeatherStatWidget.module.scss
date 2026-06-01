@@ -1,0 +1,17 @@
+.weatherStatWidget {
+  padding-top: 2rem;
+
+  &List {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .weatherStatWidget {
+    &List {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

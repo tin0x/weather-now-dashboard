@@ -1,0 +1,25 @@
+:root {
+  --bg-main: #02012b;
+
+  --bg-card-primary: #25253f;
+  --bg-card-secondary: #2f2f49;
+
+  --bg-input-primary: #25253f;
+
+  --bg-button-primary: #4657d9;
+  --bg-button-secondary: #2f2f49;
+
+  --bg-select-primary: #25253f;
+  --bg-select-secondary: #3c3b5d;
+  --bg-select-active: #32324a;
+
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8d8;
+
+  --icon-primary: #ffffff;
+  --icon-secondary: #a2a5b4;
+
+  --radius-primary: 12px;
+
+  --border-primary: 1px solid #2c2c46;
+}

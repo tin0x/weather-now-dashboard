@@ -1,0 +1,15 @@
+.card {
+  border-radius: var(--radius-primary);
+
+  &BgPrimary {
+    background: var(--bg-card-primary);
+  }
+
+  &BgSecondary {
+    background: var(--bg-card-secondary);
+  }
+
+  &Border {
+    border: var(--border-primary);
+  }
+}

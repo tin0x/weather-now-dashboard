@@ -1,0 +1,21 @@
+.errorView {
+  text-align: center;
+  color: var(--text-primary);
+
+  &Wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &Title {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  &Description {
+    width: 40%;
+    color: var(--text-secondary);
+  }
+}

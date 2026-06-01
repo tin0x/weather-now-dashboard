@@ -1,0 +1,11 @@
+.iconCancel {
+  color: var(--icon-secondary);
+
+  &Primary {
+    color: var(--icon-primary);
+  }
+
+  &Secondary {
+    color: var(--icon-secondary);
+  }
+}

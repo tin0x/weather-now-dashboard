@@ -1,0 +1,9 @@
+.iconArrowDown {
+  color: var(--icon-primary);
+  transform: rotate(0deg);
+  transition: transform 0.4s ease;
+
+  &Active {
+    transform: rotate(180deg);
+  }
+}

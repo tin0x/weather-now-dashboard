@@ -1,0 +1,15 @@
+.skeletonWeatherBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-primary);
+  padding: 6rem 2rem;
+  border-radius: var(--radius-primary);
+
+  &Loader {
+    display: block;
+    margin: 0 auto;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+}

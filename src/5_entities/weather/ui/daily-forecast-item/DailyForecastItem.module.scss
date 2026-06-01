@@ -1,0 +1,22 @@
+.dailyForecastItem {
+  &Wrapper {
+    color: var(--text-primary);
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &Icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
+
+  &TempBlock {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+  }
+}

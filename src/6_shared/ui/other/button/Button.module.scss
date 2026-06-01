@@ -1,0 +1,18 @@
+.button {
+  border-radius: var(--radius-primary);
+  padding: 0.8rem;
+  color: var(--text-primary);
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &Primary {
+    background-color: var(--bg-button-primary);
+  }
+
+  &Secondary {
+    background-color: var(--bg-button-secondary);
+  }
+}

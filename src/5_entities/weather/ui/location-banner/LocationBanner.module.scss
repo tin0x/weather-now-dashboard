@@ -1,0 +1,64 @@
+.locationBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3.2rem 2rem;
+  border-radius: var(--radius-primary);
+  background-image: var(--banner-bg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &GeolocationBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left;
+    flex: 1;
+
+    h2 {
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+  }
+
+  &TemperatureBlock {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    span {
+      font-size: 5rem;
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+  }
+
+  &Icon {
+    width: 120px;
+    height: 120px;
+
+    &Smalled {
+      padding: 20px;
+    }
+  }
+}
+
+@media (max-width: 570px) {
+  .locationBanner {
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+
+    &GeolocationBlock {
+      text-align: center;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+}

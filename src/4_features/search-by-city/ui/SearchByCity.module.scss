@@ -1,0 +1,13 @@
+.searchByCityForm {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+
+  &Loader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,37 @@
+.input {
+  &Wrapper {
+    border-radius: var(--radius-primary);
+    position: relative;
+    flex: 1;
+  }
+
+  &Element {
+    border-radius: var(--radius-primary);
+    color: var(--text-primary);
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--bg-input-primary);
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &WithIcon {
+      padding: 0.8rem 1rem 0.8rem 2.6rem;
+    }
+
+    &::placeholder {
+      color: var(--text-secondary);
+    }
+  }
+
+  &Icon {
+    pointer-events: none;
+    display: flex;
+    color: var(--icon-secondary);
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    transform: translateY(-50%);
+  }
+}

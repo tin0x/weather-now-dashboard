@@ -1,0 +1,33 @@
+.weatherErrorFallback {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &Wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  &Title {
+    color: var(--text-primary);
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  &Text {
+    color: var(--text-secondary);
+  }
+
+  &Button {
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(0.95);
+    }
+  }
+}

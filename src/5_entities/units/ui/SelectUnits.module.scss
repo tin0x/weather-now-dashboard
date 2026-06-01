@@ -1,0 +1,21 @@
+.selectUnits {
+  &Item {
+    color: var(--text-primary);
+  }
+
+  &Title {
+    padding: 0 0.2rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 0.8rem 0;
+    color: var(--text-secondary);
+  }
+
+  &Line {
+    margin-top: 0.8rem;
+    height: 2px;
+    background-color: var(--text-secondary);
+  }
+}

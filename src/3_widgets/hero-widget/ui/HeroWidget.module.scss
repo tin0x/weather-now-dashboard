@@ -1,0 +1,25 @@
+.heroWidget {
+  &Wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &Title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--text-primary);
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroWidget {
+    &Form {
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+}

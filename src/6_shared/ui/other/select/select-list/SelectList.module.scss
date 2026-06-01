@@ -1,0 +1,27 @@
+.selectList {
+  color: var(--text-primary);
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  padding: 0.5rem;
+  width: 100%;
+  min-width: 250px;
+  border-radius: 12px;
+  background-color: var(--bg-select-primary);
+  opacity: 0;
+  z-index: 1000;
+  pointer-events: none;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+
+  &Active {
+    pointer-events: all;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

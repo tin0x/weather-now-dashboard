@@ -1,0 +1,15 @@
+.selectOption {
+  &Button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+    padding: 0.3rem;
+    border-radius: 12px;
+
+    &:hover {
+      background-color: var(--bg-select-active);
+    }
+  }
+}

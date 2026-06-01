@@ -1,0 +1,40 @@
+.skeletonWeatherStat {
+  padding-top: 2rem;
+
+  &List {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  &Item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: left;
+
+    &Card {
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 1rem;
+    }
+  }
+
+  &Label {
+    color: var(--text-secondary);
+    font-size: 1rem;
+  }
+
+  &Value {
+    color: var(--text-primary);
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .skeletonWeatherStat {
+    &List {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  text-align: left;
+
+  &Label {
+    color: var(--text-secondary);
+    font-size: 1rem;
+  }
+
+  &Temp {
+    color: var(--text-primary);
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .statItem {
+    padding: 0.8rem;
+  }
+}
