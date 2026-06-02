@@ -11,6 +11,7 @@ Focused on efficient network usage, optimized assets, and scalable architecture.
 
 - **Deployed App:** [Link to Vercel](https://weather-now-dashboard-fz0sl32y1-alexs-projects-ad859b69.vercel.app/)
 - **Design Core:** UI/UX concept inspired by [Frontend Mentor](https://www.frontendmentor.io/challenges/weather-app-K1FhddVm49)
+- **Data Source:** Powered by [Open-Meteo API](https://open-meteo.com)
 
 ---
 
