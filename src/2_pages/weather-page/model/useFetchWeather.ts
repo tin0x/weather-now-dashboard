@@ -4,14 +4,13 @@ import { getCoordinates } from '@shared/services/getCoordinates.ts';
 import type { CoordinatesResponse } from '@pages/weather-page/types.ts';
 import { mapGeolocation, mapWeatherResponse } from '@entities/weather/model/utils/mappers.ts';
 import { setLocation } from '@entities/weather/model/locationSlice.ts';
-import { useSelector } from 'react-redux';
 import { getLocation } from '@entities/weather/model/selectors.ts';
-import { useAppDispatch } from '@shared/hooks/reduxHooks.ts';
+import { useAppDispatch, useAppSelector } from '@shared/hooks/reduxHooks.ts';
 import { useGetGeolocationQuery } from '@entities/weather/api/geolocationApi.ts';
 
 export const useFetchWeather = () => {
   const dispatch = useAppDispatch();
-  const { lat, lon, isSearchResultCity } = useSelector(getLocation);
+  const { lat, lon, isSearchResultCity } = useAppSelector(getLocation);
   const [geoError, setGeoError] = useState<string | null>(null);
 
   useEffect(() => {

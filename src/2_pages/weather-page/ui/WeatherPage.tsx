@@ -7,10 +7,13 @@ import classes from '@pages/weather-page/ui/WeatherPage.module.scss';
 import ErrorWeatherWidget from '@widgets/error-weather-widget/ui/ErrorWeatherWidget.tsx';
 import InfoWeatherWidget from '@widgets/info-weather-widget/ui/InfoWeatherWidget.tsx';
 import SkeletonInfoWeather from '@shared/ui/other/skeletons/skeleton-weather/ui/SkeletonInfoWeather.tsx';
+import { useCleaningURL } from '@pages/weather-page/model/useCleaningURL.ts';
 
 const WeatherPage: React.FC = () => {
   const { mappedWeather, mappedGeolocation, weatherError, isWeatherLoading, isGeolocationLoading, isSearchResultCity } =
     useFetchWeather();
+
+  useCleaningURL();
 
   const isLoading = isWeatherLoading || isGeolocationLoading;
   const hasActualError = weatherError || (!isLoading && (!mappedWeather || !mappedGeolocation));
