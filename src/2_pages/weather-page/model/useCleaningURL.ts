@@ -5,8 +5,8 @@ export const useCleaningURL = () => {
     const cleanUrl = () => {
       const { search, hash, pathname } = window.location;
 
-      if (search || hash) {
-        window.history.replaceState(null, '', pathname);
+      if (search || hash || pathname !== '/') {
+        window.history.replaceState(null, '', '/');
       }
     };
 
