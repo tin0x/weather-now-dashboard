@@ -1,8 +1,7 @@
 .weatherPage {
-  height: 100%;
+  flex: 1;
 
   &Wrapper {
-    height: 100%;
     display: flex;
     flex-direction: column;
   }

@@ -50,7 +50,7 @@ const WeatherPage: React.FC = () => {
 
   return (
     <section className={classes.weatherPage}>
-      <Container style={{ height: '100%' }}>
+      <Container>
         <div className={classes.weatherPageWrapper}>
           <HeroWidget />
           {!isSearchResultCity ? (

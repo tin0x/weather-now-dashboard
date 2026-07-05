@@ -1,20 +1,13 @@
 .layout {
-  height: 100dvh;
-  overflow: hidden;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
   &Main {
-    padding: 3rem 0;
+    padding: 1rem 0;
     flex: 1;
-    min-height: 0;
-  }
-}
-
-@media (max-width: 1100px) {
-  .layout {
-    min-height: 100dvh;
-    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
