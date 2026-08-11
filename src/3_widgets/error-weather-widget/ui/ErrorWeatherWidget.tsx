@@ -1,7 +1,7 @@
 import React from 'react';
 import ErrorView from '@shared/ui/other/error-view/ErrorView.tsx';
 import IconCancel from '@shared/ui/icons/icon-cancel/IconCancel.tsx';
-import ButtonRetryWeather from '@features/retry-get-weather/ui/ButtonRetryWeather.tsx';
+import { ButtonRetryWeather } from '@features/retry-get-weather';
 
 const ErrorWeatherWidget: React.FC = () => {
   return (

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Card from '@shared/ui/other/card/Card.tsx';
-import HourlyForecastItem from '@entities/weather/ui/hourly-forecast-item/HourlyForecastItem.tsx';
 import type { HourlyForecastWidgetProps } from '@widgets/hourly-forecast-widget/types.ts';
 import { getIconByCode } from '@entities/weather/model/utils/getIconByCode.ts';
 import classes from '@widgets/hourly-forecast-widget/ui/HourlyForecastWidget.module.scss';
@@ -12,6 +11,7 @@ import { useFormattedHourlyForecast } from '@widgets/hourly-forecast-widget/mode
 import { convertWeekdayToLong } from '@widgets/hourly-forecast-widget/model/utils/convertWeekdayToLong.ts';
 import iconMoon from '@shared/assets/images/moon-icon.webp';
 import { useAppSelector } from '@shared/hooks/reduxHooks.ts';
+import { HourlyForecastItem } from '@entities/weather';
 
 const HourlyForecastWidget: React.FC<HourlyForecastWidgetProps> = ({ hourly, daily }) => {
   const [selectedDay, setSelectedDay] = useState(daily[0]?.id ?? '');

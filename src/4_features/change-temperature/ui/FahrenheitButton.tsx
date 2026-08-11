@@ -1,6 +1,6 @@
 import React from 'react';
 import SelectOption from '@shared/ui/other/select/select-option/SelectOption.tsx';
-import { useGetTemperatureUnit } from '@features/change-units/change-temperature/model/useGetTemperatureUnit.ts';
+import { useGetTemperatureUnit } from '@features/change-temperature/model/useGetTemperatureUnit.ts';
 
 const FahrenheitButton: React.FC = () => {
   const { temperature, changeTemperatureFormat } = useGetTemperatureUnit();

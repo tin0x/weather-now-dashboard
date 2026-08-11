@@ -142,5 +142,3 @@ export type LocationState = {
   lon: number;
   isSearchResultCity: boolean;
 };
-
-// прочистити зайві поля DTO

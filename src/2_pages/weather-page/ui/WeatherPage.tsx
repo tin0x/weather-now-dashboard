@@ -1,13 +1,12 @@
 import React from 'react';
 import Container from '@shared/ui/other/container/Container.tsx';
-import HeroWidget from '@widgets/hero-widget/ui/HeroWidget.tsx';
 import { useFetchWeather } from '@pages/weather-page/model/useFetchWeather.ts';
 import classes from '@pages/weather-page/ui/WeatherPage.module.scss';
-
-import ErrorWeatherWidget from '@widgets/error-weather-widget/ui/ErrorWeatherWidget.tsx';
-import InfoWeatherWidget from '@widgets/info-weather-widget/ui/InfoWeatherWidget.tsx';
 import SkeletonInfoWeather from '@shared/ui/other/skeletons/skeleton-weather/ui/SkeletonInfoWeather.tsx';
 import { useCleaningURL } from '@pages/weather-page/model/useCleaningURL.ts';
+import { ErrorWeatherWidget } from '@widgets/error-weather-widget';
+import { HeroWidget } from '@widgets/hero-widget';
+import { InfoWeatherWidget } from '@widgets/info-weather-widget';
 
 const WeatherPage: React.FC = () => {
   const { mappedWeather, mappedGeolocation, weatherError, isWeatherLoading, isGeolocationLoading, isSearchResultCity } =

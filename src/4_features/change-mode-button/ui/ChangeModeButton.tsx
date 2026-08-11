@@ -1,6 +1,6 @@
 import React from 'react';
 import SelectOption from '@shared/ui/other/select/select-option/SelectOption.tsx';
-import { useGetModeUnit } from '@features/change-units/change-mode-button/model/useGetModelUnit.ts';
+import { useGetModeUnit } from '@features/change-mode-button/model/useGetModelUnit.ts';
 
 const ChangeModeButton: React.FC = () => {
   const { modeUnits, changeUnitsMode } = useGetModeUnit();

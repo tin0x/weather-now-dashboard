@@ -1,12 +1,9 @@
 import React from 'react';
-import SelectUnits from '@entities/units/ui/SelectUnits.tsx';
-import ChangeModeButton from '@features/change-units/change-mode-button/ui/ChangeModeButton.tsx';
-import CelsiusButton from '@features/change-units/change-temperature/ui/CelsiusButton.tsx';
-import FahrenheitButton from '@features/change-units/change-temperature/ui/FahrenheitButton.tsx';
-import KmhButton from '@features/change-units/change-wind-speed/ui/KmhButton.tsx';
-import MphButton from '@features/change-units/change-wind-speed/ui/MphButton.tsx';
-import MillimetersButton from '@features/change-units/change-precipitation/ui/MillimetersButton.tsx';
-import InchesButton from '@features/change-units/change-precipitation/ui/InchesButton.tsx';
+import { SelectUnits } from '@entities/units';
+import { ChangeModeButton } from '@features/change-mode-button';
+import { InchesButton, MillimetersButton } from '@features/change-precipitation';
+import { CelsiusButton, FahrenheitButton } from '@features/change-temperature';
+import { KmhButton, MphButton } from '@features/change-wind-speed';
 
 const UnitsWidget: React.FC = () => {
   return (

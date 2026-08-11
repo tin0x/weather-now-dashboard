@@ -1,10 +1,10 @@
 import React from 'react';
-import StatItem from '@entities/weather/ui/stat-item/StatItem.tsx';
 import type { MappedCurrentForecast } from '@entities/weather/types.ts';
 import classes from '@widgets/weather-stat-widget/ui/WeatherStatWidget.module.scss';
 import { formatPrecipitation, formatTemp, formatWind } from '@entities/weather/model/utils/convertWeather.ts';
 import { useSelector } from 'react-redux';
 import { getPrecipitationUnit, getTemperatureUnit, getWindSpeedUnit } from '@entities/units/model/selectors.ts';
+import { StatItem } from '@entities/weather';
 
 const WeatherStatWidget: React.FC<MappedCurrentForecast> = ({ wind, humidity, feelsLike, precipitation }) => {
   const temperatureInit = useSelector(getTemperatureUnit);
