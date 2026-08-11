@@ -7,7 +7,7 @@ const HeroWidget: React.FC = () => {
     <div className="heroWidget">
       <div className={classes.heroWidgetWrapper}>
         <h1 className={classes.heroWidgetTitle}>How's the sky looking today?</h1>
-        <SearchByCity className={classes.heroWidgetForm} />
+        <SearchByCity />
       </div>
     </div>
   );

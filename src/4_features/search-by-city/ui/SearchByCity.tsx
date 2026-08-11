@@ -9,7 +9,7 @@ import { useCitySelection } from '@features/search-by-city/model/useCitySelectio
 import IconSpinner from '@shared/ui/icons/icon-spinner/IconSpinner.tsx';
 import clsx from 'clsx';
 
-const SearchByCity: React.FC<{ className: string }> = ({ className }) => {
+const SearchByCity: React.FC<{ className?: string }> = ({ className }) => {
   const {
     handleInputChange,
     handleChangeCity,
@@ -29,7 +29,7 @@ const SearchByCity: React.FC<{ className: string }> = ({ className }) => {
   const hasCity = debouncedSearch?.length >= 2;
 
   return (
-    <form className={clsx(className, classes.searchByCityForm)} onSubmit={handleStartSearch} action="#">
+    <form className={clsx(classes.searchByCityForm, className)} onSubmit={handleStartSearch} action="#">
       <Input
         Icon={IconSearch}
         placeholder="Search for a place..."
