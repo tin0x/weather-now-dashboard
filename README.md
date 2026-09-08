@@ -1,4 +1,8 @@
-# ⛅ Weather Now - Dashboard
+<h1 align="center">
+  <img src="./public/favicon.png" width="100" alt="Weather Now Dashboard logo" />
+  <br />
+  Weather Now - Dashboard
+</h1>
 
 High-performance weather dashboard built with React and Feature-Sliced Design.
 Focused on efficient network usage, optimized assets, and scalable architecture.
@@ -12,6 +16,14 @@ Focused on efficient network usage, optimized assets, and scalable architecture.
 - **Deployed App:** [Link to Vercel](https://weather-now-dashboard.vercel.app/)
 - **Design Core:** UI/UX concept inspired by [Frontend Mentor](https://www.frontendmentor.io/challenges/weather-app-K1FhddVm49)
 - **Data Source:** Powered by [Open-Meteo API](https://open-meteo.com)
+
+---
+
+## Screenshots
+
+<p align="center">
+  <img src="./screenshots/screenshot-1.webp" alt="Home Page" />
+</p>
 
 ---
 
