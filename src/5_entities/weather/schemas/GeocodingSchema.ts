@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const GeocodingCitySchema = z.object({
+const GeocodingSchema = z.object({
   id: z.number(),
   name: z.string(),
   latitude: z.number(),
@@ -11,8 +11,8 @@ const GeocodingCitySchema = z.object({
   admin3: z.string().optional(),
 });
 
-export const GeocodingCitiesDTOSchema = z.object({
-  results: z.array(GeocodingCitySchema).optional(),
+export const GeocodingDTOSchema = z.object({
+  results: z.array(GeocodingSchema).optional(),
 });
 
-export type GeocodingCitiesDTO = z.infer<typeof GeocodingCitiesDTOSchema>;
+export type GeocodingCitiesDTO = z.infer<typeof GeocodingDTOSchema>;

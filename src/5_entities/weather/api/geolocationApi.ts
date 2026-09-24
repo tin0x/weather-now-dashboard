@@ -1,5 +1,5 @@
 import mapGeolocation from '@entities/weather/mappers/mapGeolocation';
-import { GeolocationSchema } from '@entities/weather/schemas/GeolocationSchama';
+import { GeolocationSchema } from '@entities/weather/schemas/GeolocationSchema';
 import type { Geolocation, GeolocationArgs } from '@entities/weather/types.ts';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { GEOLOCATION_API } from '@shared/constants/api.ts';

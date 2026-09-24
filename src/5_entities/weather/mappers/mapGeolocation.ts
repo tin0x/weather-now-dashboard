@@ -1,4 +1,4 @@
-import type { GeolocationDTO } from '@entities/weather/schemas/GeolocationSchama';
+import type { GeolocationDTO } from '@entities/weather/schemas/GeolocationSchema';
 import type { Geolocation } from '@entities/weather/types';
 
 const mapGeolocation = (dto: GeolocationDTO): Geolocation => {

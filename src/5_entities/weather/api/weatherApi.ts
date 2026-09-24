@@ -1,8 +1,8 @@
 import mapCurrentForecast from '@entities/weather/mappers/mapCurrentForecast';
 import mapDailyForecast from '@entities/weather/mappers/mapDailyForecast';
 import mapHourlyForecast from '@entities/weather/mappers/mapHourlyForecast';
-import { WeatherResponseSchema } from '@entities/weather/schemas/WeatherResponseSchema';
-import type { CoordsArgs, MappedWeatherResponse } from '@entities/weather/types.ts';
+import { WeatherSchema } from '@entities/weather/schemas/WeatherSchema';
+import type { Weather, WeatherArgs } from '@entities/weather/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { WEATHER_API } from '@shared/constants/api.ts';
 
@@ -10,7 +10,7 @@ export const weatherApi = createApi({
   reducerPath: 'weatherApi',
   baseQuery: fetchBaseQuery({ baseUrl: WEATHER_API.BASE }),
   endpoints: (builder) => ({
-    getWeather: builder.query<MappedWeatherResponse, CoordsArgs>({
+    getWeather: builder.query<Weather, WeatherArgs>({
       query: ({ lat, lon }) => ({
         url: WEATHER_API.FORECAST,
         params: {
@@ -24,7 +24,7 @@ export const weatherApi = createApi({
         },
       }),
       transformResponse: (dto: unknown) => {
-        const parsed = WeatherResponseSchema.parse(dto);
+        const parsed = WeatherSchema.parse(dto);
         const userLocale = window.navigator.language;
 
         return {

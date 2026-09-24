@@ -1,4 +1,4 @@
-import type { WeatherResponseDTO } from '@entities/weather/schemas/WeatherResponseSchema';
+import type { WeatherResponseDTO } from '@entities/weather/schemas/WeatherSchema';
 import type { MappedHourlyForecast } from '@entities/weather/types';
 
 export const mapHourlyForecast = (dto: WeatherResponseDTO, locale: string): MappedHourlyForecast => {

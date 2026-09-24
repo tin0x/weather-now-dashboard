@@ -1,4 +1,4 @@
-import type { WeatherResponseDTO } from '@entities/weather/schemas/WeatherResponseSchema';
+import type { WeatherResponseDTO } from '@entities/weather/schemas/WeatherSchema';
 import type { MappedCurrentForecast } from '@entities/weather/types';
 
 const mapCurrentForecast = (dto: WeatherResponseDTO): MappedCurrentForecast => {

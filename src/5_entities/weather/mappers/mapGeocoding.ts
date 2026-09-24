@@ -1,4 +1,4 @@
-import type { GeocodingCitiesDTO } from '@entities/weather/schemas/GeocodingCitySchema';
+import type { GeocodingCitiesDTO } from '@entities/weather/schemas/GeocodingSchema';
 import type { GeocodingResponse } from '@entities/weather/types';
 
 const mapGeocoding = (dto: GeocodingCitiesDTO): GeocodingResponse[] => {

@@ -1,6 +1,6 @@
 // GEOCODING
 
-export type GeocodingResponse = {
+export type Geocoding = {
   id: number;
   city: string;
   country: string;
@@ -64,10 +64,15 @@ export type DailyForecast = {
   icon: number;
 };
 
-export type MappedWeatherResponse = {
+export type Weather = {
   current: CurrentForecast;
   hourly: HourlyForecast[];
   daily: DailyForecast[];
+};
+
+export type WeatherArgs = {
+  lat: number;
+  lon: number;
 };
 
 // Reducer State

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const WeatherResponseSchema = z.object({
+export const WeatherSchema = z.object({
   utc_offset_seconds: z.number(),
   current: z.object({
     time: z.string(),
@@ -15,7 +15,7 @@ export const WeatherResponseSchema = z.object({
   hourly: z.object({
     time: z.array(z.string()),
     temperature_2m: z.array(z.number()),
-    weather_code: z.array(z.number())
+    weather_code: z.array(z.number()),
   }),
   daily: z.object({
     time: z.array(z.string()),
@@ -25,4 +25,4 @@ export const WeatherResponseSchema = z.object({
   }),
 });
 
-export type WeatherResponseDTO = z.infer<typeof WeatherResponseSchema>;
+export type WeatherResponseDTO = z.infer<typeof WeatherSchema>;
