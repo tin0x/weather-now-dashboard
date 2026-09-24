@@ -1,7 +1,7 @@
-import type { WeatherResponseDTO } from '@entities/weather/schemas/WeatherSchema';
-import type { MappedDailyForecast } from '@entities/weather/types';
+import type { WeatherDTO } from '@entities/weather/schemas/WeatherSchema';
+import type { DailyForecast } from '@entities/weather/types';
 
-const mapDailyForecast = (dto: WeatherResponseDTO): MappedDailyForecast => {
+const mapDailyForecast = (dto: WeatherDTO): DailyForecast[] => {
   const { time, weather_code, temperature_2m_max, temperature_2m_min } = dto.daily;
 
   return time.map((t: string, index: number) => {

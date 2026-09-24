@@ -25,4 +25,4 @@ export const WeatherSchema = z.object({
   }),
 });
 
-export type WeatherResponseDTO = z.infer<typeof WeatherSchema>;
+export type WeatherDTO = z.infer<typeof WeatherSchema>;

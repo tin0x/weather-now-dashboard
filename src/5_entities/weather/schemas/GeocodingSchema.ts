@@ -15,4 +15,4 @@ export const GeocodingDTOSchema = z.object({
   results: z.array(GeocodingSchema).optional(),
 });
 
-export type GeocodingCitiesDTO = z.infer<typeof GeocodingDTOSchema>;
+export type GeocodingDTO = z.infer<typeof GeocodingDTOSchema>;

@@ -1,7 +1,7 @@
-import type { WeatherResponseDTO } from '@entities/weather/schemas/WeatherSchema';
-import type { MappedCurrentForecast } from '@entities/weather/types';
+import type { WeatherDTO } from '@entities/weather/schemas/WeatherSchema';
+import type { CurrentForecast } from '@entities/weather/types';
 
-const mapCurrentForecast = (dto: WeatherResponseDTO): MappedCurrentForecast => {
+const mapCurrentForecast = (dto: WeatherDTO): CurrentForecast => {
   const { current } = dto;
   const date = new Date(current.time);
 

@@ -1,13 +1,13 @@
-import type { GeocodingCitiesDTO } from '@entities/weather/schemas/GeocodingSchema';
-import type { GeocodingResponse } from '@entities/weather/types';
+import type { GeocodingDTO } from '@entities/weather/schemas/GeocodingSchema';
+import type { Geocoding } from '@entities/weather/types';
 
-const mapGeocoding = (dto: GeocodingCitiesDTO): GeocodingResponse[] => {
+const mapGeocoding = (dto: GeocodingDTO): Geocoding[] => {
   if (!dto || !dto.results?.length) return [];
 
   return dto.results.map((item) => ({
     id: item.id,
     city: item.name,
-    country: item.country,
+    country: item.country || '',
     location: {
       lat: item.latitude,
       lon: item.longitude,
