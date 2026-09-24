@@ -1,11 +1,11 @@
-import React from 'react';
-import { getIconByCode } from '@entities/weather/model/utils/getIconByCode.ts';
-import type { DailyForecastWidgetProps } from '@widgets/daily-forecast-widget/types.ts';
-import classes from '@widgets/daily-forecast-widget/ui/DailyForecastWidget.module.scss';
-import { formatTemp } from '@entities/weather/model/utils/convertWeather.ts';
-import { useSelector } from 'react-redux';
 import { getTemperatureUnit } from '@entities/units/model/selectors.ts';
 import { DailyForecastItem } from '@entities/weather';
+import { formatTemp } from '@entities/weather/lib/convertWeather';
+import { getIconByCode } from '@entities/weather/lib/getIconByCode';
+import type { DailyForecastWidgetProps } from '@widgets/daily-forecast-widget/types.ts';
+import classes from '@widgets/daily-forecast-widget/ui/DailyForecastWidget.module.scss';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 const DailyForecastWidget: React.FC<DailyForecastWidgetProps> = ({ daily }) => {
   const temperatureUnit = useSelector(getTemperatureUnit);

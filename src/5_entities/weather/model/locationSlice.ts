@@ -1,6 +1,6 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { CoordinatesResponse } from '@pages/weather-page/types.ts';
 import type { LocationState } from '@entities/weather/types.ts';
+import type { CoordinatesResponse } from '@pages/weather-page/types.ts';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: LocationState = {
   lat: 0,
@@ -13,8 +13,10 @@ export const locationSlice = createSlice({
   initialState,
   reducers: {
     setLocation: (state, action: PayloadAction<CoordinatesResponse>) => {
-      state.lat = action.payload.lat;
-      state.lon = action.payload.lon;
+      const { lat, lon } = action.payload;
+      
+      state.lat = lat;
+      state.lon = lon;
       state.isSearchResultCity = true;
     },
     setSearchResultCity: (state, action: PayloadAction<boolean>) => {

@@ -1,12 +1,14 @@
+import mapGeolocation from '@entities/weather/mappers/mapGeolocation';
+import { GeolocationSchema } from '@entities/weather/schemas/GeolocationSchama';
+import type { Geolocation, GeolocationArgs } from '@entities/weather/types.ts';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { GEOLOCATION_API } from '@shared/constants/api.ts';
-import type { CoordsArgs, GeolocationResponseDTO } from '@entities/weather/types.ts';
 
 export const geolocationApi = createApi({
   reducerPath: 'geolocationApi',
   baseQuery: fetchBaseQuery({ baseUrl: GEOLOCATION_API.BASE }),
   endpoints: (builder) => ({
-    getGeolocation: builder.query<GeolocationResponseDTO, CoordsArgs>({
+    getGeolocation: builder.query<Geolocation, GeolocationArgs>({
       query: ({ lat, lon }) => ({
         url: GEOLOCATION_API.REVERSE,
         params: {
@@ -15,6 +17,10 @@ export const geolocationApi = createApi({
           localityLanguage: 'en',
         },
       }),
+      transformResponse: (dto: unknown) => {
+        const parsed = GeolocationSchema.parse(dto);
+        return mapGeolocation(parsed);
+      },
     }),
   }),
 });

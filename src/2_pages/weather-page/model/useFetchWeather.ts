@@ -1,12 +1,16 @@
+import { useGetGeolocationQuery } from '@entities/weather/api/geolocationApi.ts';
 import { useGetWeatherQuery } from '@entities/weather/api/weatherApi.ts';
-import { useEffect, useMemo, useState } from 'react';
-import { getCoordinates } from '@shared/services/getCoordinates.ts';
-import type { CoordinatesResponse } from '@pages/weather-page/types.ts';
-import { mapGeolocation, mapWeatherResponse } from '@entities/weather/model/utils/mappers.ts';
 import { setLocation } from '@entities/weather/model/locationSlice.ts';
 import { getLocation } from '@entities/weather/model/selectors.ts';
+import type { CoordinatesResponse } from '@pages/weather-page/types.ts';
 import { useAppDispatch, useAppSelector } from '@shared/hooks/reduxHooks.ts';
-import { useGetGeolocationQuery } from '@entities/weather/api/geolocationApi.ts';
+import { getCoordinates } from '@shared/services/getCoordinates.ts';
+import { useEffect, useState } from 'react';
+
+const defaultLocation = {
+  lat: 50.4501,
+  lon: 30.5234,
+};
 
 export const useFetchWeather = () => {
   const dispatch = useAppDispatch();
@@ -20,7 +24,7 @@ export const useFetchWeather = () => {
         dispatch(setLocation(response));
       } catch (error) {
         setGeoError(error instanceof Error ? error.message : 'Geolocation Error');
-        dispatch(setLocation({ lat: 50.4501, lon: 30.5234 }));
+        dispatch(setLocation({ lat: defaultLocation.lat, lon: defaultLocation.lon }));
       }
     })();
   }, [dispatch]);
@@ -52,17 +56,9 @@ export const useFetchWeather = () => {
     },
   );
 
-  const mappedWeather = useMemo(() => {
-    return weather ? mapWeatherResponse(weather) : null;
-  }, [weather]);
-
-  const mappedGeolocation = useMemo(() => {
-    return geolocation ? mapGeolocation(geolocation) : null;
-  }, [geolocation]);
-
   return {
-    mappedWeather,
-    mappedGeolocation,
+    mappedWeather: weather,
+    mappedGeolocation: geolocation,
     isWeatherLoading: isWeatherLoading || isWeatherFetching || isLocationEmpty,
     isGeolocationLoading: isGeolocationLoading || isLocationEmpty,
     isSearchResultCity,

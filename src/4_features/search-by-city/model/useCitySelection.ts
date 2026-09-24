@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { useAppDispatch } from '@shared/hooks/reduxHooks.ts';
-import { setLocation, setSearchResultCity } from '@entities/weather/model/locationSlice.ts';
-import { mapGeocoding } from '@entities/weather/model/utils/mappers.ts';
 import { useGetGeocodingQuery } from '@entities/weather/api/geocodingApi.ts';
-import { useDebounce } from '@shared/hooks/useDebounce.ts';
+import { setLocation, setSearchResultCity } from '@entities/weather/model/locationSlice.ts';
 import { skipToken } from '@reduxjs/toolkit/query';
+import { useAppDispatch } from '@shared/hooks/reduxHooks.ts';
+import { useDebounce } from '@shared/hooks/useDebounce.ts';
+import React, { useState } from 'react';
 
 export const useCitySelection = () => {
   const [city, setCity] = useState('');
@@ -13,7 +12,6 @@ export const useCitySelection = () => {
   const { data, isLoading, isFetching, error } = useGetGeocodingQuery(
     city && city.length >= 2 ? { city: debouncedSearch, count: 5 } : skipToken,
   );
-  const mappedGeocoding = data ? mapGeocoding(data) : [];
 
   const dispatch = useAppDispatch();
 
@@ -33,12 +31,12 @@ export const useCitySelection = () => {
     setShowSuggestions(false);
   };
 
-  const handleStartSearch = (e: React.FormEvent) => {
+  const handleStartSearch = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (city.length < 2) return null;
 
-    const firstResult = mappedGeocoding?.[0];
+    const firstResult = data?.[0];
 
     if (firstResult) {
       setCity(firstResult.city.trim());
@@ -60,7 +58,7 @@ export const useCitySelection = () => {
     handleInputChange,
     handleChangeCity,
     handleStartSearch,
-    mappedGeocoding,
+    mappedGeocoding: data || [],
     isLoading,
     isFetching,
     error,

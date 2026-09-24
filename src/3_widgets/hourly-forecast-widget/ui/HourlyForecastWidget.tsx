@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import Card from '@shared/ui/other/card/Card.tsx';
-import type { HourlyForecastWidgetProps } from '@widgets/hourly-forecast-widget/types.ts';
-import { getIconByCode } from '@entities/weather/model/utils/getIconByCode.ts';
-import classes from '@widgets/hourly-forecast-widget/ui/HourlyForecastWidget.module.scss';
-import Select from '@shared/ui/other/select/Select.tsx';
-import SelectOption from '@shared/ui/other/select/select-option/SelectOption.tsx';
 import { getTemperatureUnit } from '@entities/units/model/selectors.ts';
-import { formatTemp } from '@entities/weather/model/utils/convertWeather.ts';
-import { useFormattedHourlyForecast } from '@widgets/hourly-forecast-widget/model/useFormattedHourlyForecast.ts';
-import { convertWeekdayToLong } from '@widgets/hourly-forecast-widget/model/utils/convertWeekdayToLong.ts';
+import { HourlyForecastItem } from '@entities/weather';
+import { formatTemp } from '@entities/weather/lib/convertWeather';
+import { getIconByCode } from '@entities/weather/lib/getIconByCode';
 import iconMoon from '@shared/assets/images/moon-icon.webp';
 import { useAppSelector } from '@shared/hooks/reduxHooks.ts';
-import { HourlyForecastItem } from '@entities/weather';
+import Card from '@shared/ui/other/card/Card.tsx';
+import Select from '@shared/ui/other/select/Select.tsx';
+import SelectOption from '@shared/ui/other/select/select-option/SelectOption.tsx';
+import { useFormattedHourlyForecast } from '@widgets/hourly-forecast-widget/model/useFormattedHourlyForecast.ts';
+import { convertWeekdayToLong } from '@widgets/hourly-forecast-widget/model/utils/convertWeekdayToLong.ts';
+import type { HourlyForecastWidgetProps } from '@widgets/hourly-forecast-widget/types.ts';
+import classes from '@widgets/hourly-forecast-widget/ui/HourlyForecastWidget.module.scss';
+import React, { useState } from 'react';
 
 const HourlyForecastWidget: React.FC<HourlyForecastWidgetProps> = ({ hourly, daily }) => {
   const [selectedDay, setSelectedDay] = useState(daily[0]?.id ?? '');

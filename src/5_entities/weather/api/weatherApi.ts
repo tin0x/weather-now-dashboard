@@ -1,12 +1,16 @@
+import mapCurrentForecast from '@entities/weather/mappers/mapCurrentForecast';
+import mapDailyForecast from '@entities/weather/mappers/mapDailyForecast';
+import mapHourlyForecast from '@entities/weather/mappers/mapHourlyForecast';
+import { WeatherResponseSchema } from '@entities/weather/schemas/WeatherResponseSchema';
+import type { CoordsArgs, MappedWeatherResponse } from '@entities/weather/types.ts';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { WEATHER_API } from '@shared/constants/api.ts';
-import type { CoordsArgs, WeatherResponseDTO } from '@entities/weather/types.ts';
 
 export const weatherApi = createApi({
   reducerPath: 'weatherApi',
   baseQuery: fetchBaseQuery({ baseUrl: WEATHER_API.BASE }),
   endpoints: (builder) => ({
-    getWeather: builder.query<WeatherResponseDTO, CoordsArgs>({
+    getWeather: builder.query<MappedWeatherResponse, CoordsArgs>({
       query: ({ lat, lon }) => ({
         url: WEATHER_API.FORECAST,
         params: {
@@ -19,6 +23,16 @@ export const weatherApi = createApi({
             'temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code,precipitation,apparent_temperature,is_day',
         },
       }),
+      transformResponse: (dto: unknown) => {
+        const parsed = WeatherResponseSchema.parse(dto);
+        const userLocale = window.navigator.language;
+
+        return {
+          current: mapCurrentForecast(parsed),
+          hourly: mapHourlyForecast(parsed, userLocale),
+          daily: mapDailyForecast(parsed),
+        };
+      },
     }),
   }),
 });

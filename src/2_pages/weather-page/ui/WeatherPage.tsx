@@ -1,15 +1,15 @@
-import React from 'react';
-import Container from '@shared/ui/other/container/Container.tsx';
+import { useCleaningURL } from '@pages/weather-page/model/useCleaningURL.ts';
 import { useFetchWeather } from '@pages/weather-page/model/useFetchWeather.ts';
 import classes from '@pages/weather-page/ui/WeatherPage.module.scss';
+import Container from '@shared/ui/other/container/Container.tsx';
 import SkeletonInfoWeather from '@shared/ui/other/skeletons/skeleton-weather/ui/SkeletonInfoWeather.tsx';
-import { useCleaningURL } from '@pages/weather-page/model/useCleaningURL.ts';
+import { DailyForecastWidget } from '@widgets/daily-forecast-widget';
 import { ErrorWeatherWidget } from '@widgets/error-weather-widget';
 import { HeroWidget } from '@widgets/hero-widget';
+import { HourlyForecastWidget } from '@widgets/hourly-forecast-widget';
 import { WeatherBannerWidget } from '@widgets/weather-banner-widget';
 import { WeatherStatWidget } from '@widgets/weather-stat-widget';
-import { DailyForecastWidget } from '@widgets/daily-forecast-widget';
-import { HourlyForecastWidget } from '@widgets/hourly-forecast-widget';
+import React from 'react';
 
 const WeatherPage: React.FC = () => {
   const { mappedWeather, mappedGeolocation, weatherError, isWeatherLoading, isGeolocationLoading, isSearchResultCity } =

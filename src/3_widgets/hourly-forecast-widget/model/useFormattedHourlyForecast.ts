@@ -1,8 +1,8 @@
-import { useMemo, useState } from 'react';
+import { checkIsNight } from '@entities/weather/lib/checkIsNight';
+import { getDateString } from '@entities/weather/lib/getDateString';
+import { getHour } from '@entities/weather/lib/getHour';
 import type { DailyForecast, HourlyForecast } from '@entities/weather/types.ts';
-import { getDateString } from '@entities/weather/model/utils/getDateString.ts';
-import { getHour } from '@entities/weather/model/utils/getHour.ts';
-import { checkIsNight } from '@entities/weather/model/utils/checkIsNight.ts';
+import { useMemo, useState } from 'react';
 
 export const useFormattedHourlyForecast = (
   hourly: HourlyForecast[],
