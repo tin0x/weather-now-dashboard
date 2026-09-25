@@ -10,8 +10,10 @@ export const useCitySelection = () => {
   const debouncedSearch = useDebounce(city, 700);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const { data, isLoading, isFetching, error } = useGetGeocodingQuery(
-    city && city.length >= 2 ? { city: debouncedSearch, count: 5 } : skipToken,
+    debouncedSearch && debouncedSearch.length >= 2 ? { city: debouncedSearch.trimEnd(), count: 5 } : skipToken,
   );
+
+  const mappedGeocoding = debouncedSearch.length >= 2 && isFetching ? [] : data;
 
   const dispatch = useAppDispatch();
 
@@ -19,7 +21,7 @@ export const useCitySelection = () => {
     let value = e.target.value;
 
     if (value.startsWith(' ')) value = value.trimStart();
-    value = value.replace(/[^a-zA-Z\s]/g, '').replace(/\s\s+/g, ' ');
+    value = value.replace(/[^a-zA-Z\s-]/g, '').replace(/\s\s+/g, ' ');
 
     setCity(value);
     setShowSuggestions(true);
@@ -58,7 +60,7 @@ export const useCitySelection = () => {
     handleInputChange,
     handleChangeCity,
     handleStartSearch,
-    mappedGeocoding: data || [],
+    mappedGeocoding,
     isLoading,
     isFetching,
     error,

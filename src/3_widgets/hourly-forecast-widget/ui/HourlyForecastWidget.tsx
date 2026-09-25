@@ -17,7 +17,7 @@ const HourlyForecastWidget: React.FC<HourlyForecastWidgetProps> = ({ hourly, dai
   const [selectedDay, setSelectedDay] = useState(daily[0]?.id ?? '');
   const temperatureInit = useAppSelector(getTemperatureUnit);
 
-  const { fullDayName, filteredHours } = useFormattedHourlyForecast(hourly, daily, selectedDay, hourly[0]?.utcSeconds);
+  const { fullDayName, filteredHours } = useFormattedHourlyForecast(hourly, daily, selectedDay);
 
   return (
     <Card className={classes.hourlyForecastWidget} background={'primary'} isBorder>

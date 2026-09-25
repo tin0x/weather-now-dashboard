@@ -1,13 +1,13 @@
-import React from 'react';
-import Input from '@shared/ui/other/input/Input.tsx';
+import { useCitySelection } from '@features/search-by-city/model/useCitySelection.ts';
 import classes from '@features/search-by-city/ui/SearchByCity.module.scss';
 import IconSearch from '@shared/ui/icons/icon-search/IconSearch.tsx';
+import IconSpinner from '@shared/ui/icons/icon-spinner/IconSpinner.tsx';
 import Button from '@shared/ui/other/button/Button.tsx';
+import Input from '@shared/ui/other/input/Input.tsx';
 import SelectList from '@shared/ui/other/select/select-list/SelectList.tsx';
 import SelectOption from '@shared/ui/other/select/select-option/SelectOption.tsx';
-import { useCitySelection } from '@features/search-by-city/model/useCitySelection.ts';
-import IconSpinner from '@shared/ui/icons/icon-spinner/IconSpinner.tsx';
 import clsx from 'clsx';
+import React from 'react';
 
 const SearchByCity: React.FC<{ className?: string }> = ({ className }) => {
   const {
@@ -24,12 +24,12 @@ const SearchByCity: React.FC<{ className?: string }> = ({ className }) => {
 
   const isDebouncing = city !== debouncedSearch;
   const showLoader = isLoading || isFetching || (isDebouncing && city.length >= 2);
-  const hasResult = mappedGeocoding!.length > 0;
+  const hasResult = (mappedGeocoding?.length ?? 0) > 0;
   const showResultsList = showSuggestions && hasResult && !isDebouncing && city.length >= 2;
   const hasCity = debouncedSearch?.length >= 2;
 
   return (
-    <form className={clsx(classes.searchByCityForm, className)} onSubmit={handleStartSearch} action="#">
+    <form className={clsx(classes.searchByCityForm, className)} onSubmit={handleStartSearch}>
       <Input
         Icon={IconSearch}
         placeholder="Search for a place..."
@@ -48,7 +48,7 @@ const SearchByCity: React.FC<{ className?: string }> = ({ className }) => {
 
         {showResultsList && (
           <SelectList isOpenSelect={showSuggestions}>
-            {mappedGeocoding!.map((item) => (
+            {mappedGeocoding?.map((item) => (
               <SelectOption
                 key={item.id}
                 label={`${item.city}, ${item.adminDivision.admin1 ? item.adminDivision.admin1 : ''}, ${item.adminDivision.admin2 ? item.adminDivision.admin2 : ''}`}

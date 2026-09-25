@@ -50,7 +50,7 @@ export type CurrentForecast = {
 export type HourlyForecast = {
   id: string;
   rawDate: string;
-  utcSeconds: number;
+  timezone: string;
   temp: number;
   formattedHour: string;
   icon: number;

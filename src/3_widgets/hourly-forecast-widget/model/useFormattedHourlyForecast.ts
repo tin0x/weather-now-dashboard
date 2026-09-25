@@ -1,37 +1,64 @@
 import { checkIsNight } from '@entities/weather/lib/checkIsNight';
 import { getDateString } from '@entities/weather/lib/getDateString';
 import { getHour } from '@entities/weather/lib/getHour';
-import type { DailyForecast, HourlyForecast } from '@entities/weather/types.ts';
+import type {
+  DailyForecast,
+  HourlyForecast,
+} from '@entities/weather/types.ts';
 import { useMemo, useState } from 'react';
 
 export const useFormattedHourlyForecast = (
   hourly: HourlyForecast[],
   daily: DailyForecast[],
   selectedDay: string,
-  utcSeconds: number,
 ) => {
   const [now] = useState(() => Date.now());
-  const TIME_ZONE = 'Europe/Kyiv';
 
-  const selectedDayISO = selectedDay.split('T')[0];
+  const timezone = hourly?.[0]?.timezone;
+
+  const selectedDayISO = useMemo(() => {
+    if (!timezone) return '';
+
+    return getDateString(
+      new Date(selectedDay),
+      timezone,
+    );
+  }, [selectedDay, timezone]);
 
   const filteredHours = useMemo(() => {
-    if (!hourly || hourly.length === 0) return [];
+    if (!hourly?.length || !timezone) return [];
 
-    const clientUnifyingUtc = now + new Date().getTimezoneOffset() * 60 * 1000;
-    const targetRemoteNow = new Date(clientUnifyingUtc + utcSeconds * 1000);
+    const currentNow = new Date(now);
 
-    const remoteDateISO = getDateString(targetRemoteNow, TIME_ZONE);
-    const remoteHour = getHour(targetRemoteNow, TIME_ZONE);
+    const remoteDateISO = getDateString(
+      currentNow,
+      timezone,
+    );
+
+    const remoteHour = getHour(
+      currentNow,
+      timezone,
+    );
 
     return hourly
       .filter((item) => {
-        const itemDay = item.id.split('T')[0];
+        const itemDate = new Date(item.id);
 
-        if (itemDay !== selectedDayISO) return false;
+        const itemDay = getDateString(
+          itemDate,
+          timezone,
+        );
+
+        if (itemDay !== selectedDayISO) {
+          return false;
+        }
 
         if (selectedDayISO === remoteDateISO) {
-          const itemHour = new Date(item.id).getHours();
+          const itemHour = getHour(
+            itemDate,
+            timezone,
+          );
+
           return itemHour >= remoteHour;
         }
 
@@ -39,7 +66,11 @@ export const useFormattedHourlyForecast = (
       })
       .map((item) => {
         const itemDate = new Date(item.id);
-        const hour = getHour(itemDate, TIME_ZONE);
+
+        const hour = getHour(
+          itemDate,
+          timezone,
+        );
 
         return {
           ...item,
@@ -47,19 +78,23 @@ export const useFormattedHourlyForecast = (
           formattedHour: `${String(hour).padStart(2, '0')}:00`,
         };
       });
-  }, [hourly, now, selectedDayISO, utcSeconds]);
+  }, [hourly, now, selectedDayISO, timezone]);
 
   const selectedDayData = useMemo(() => {
     return daily.find((item) => item.id === selectedDay);
   }, [daily, selectedDay]);
 
   const fullDayName = useMemo(() => {
-    if (!selectedDayData) return '';
+    if (!selectedDayData || !timezone) return '';
 
-    return new Date(selectedDayData.id).toLocaleDateString('en-US', {
-      weekday: 'long',
-    });
-  }, [selectedDayData]);
+    return new Date(selectedDayData.id).toLocaleDateString(
+      'en-US',
+      {
+        weekday: 'long',
+        timeZone: timezone,
+      },
+    );
+  }, [selectedDayData, timezone]);
 
   return {
     filteredHours,

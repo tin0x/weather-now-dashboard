@@ -16,7 +16,7 @@ export const mapHourlyForecast = (dto: WeatherDTO, locale: string): HourlyForeca
     return {
       id: t,
       rawDate: rawDate.toISOString(),
-      utcSeconds: dto.utc_offset_seconds,
+      timezone: dto.timezone,
       temp: Math.round(temperature_2m[index]),
       icon: weather_code[index],
       formattedHour: formatter.format(rawDate),
